@@ -1,0 +1,20 @@
+Voom::Presenters.define(:article_card, namespace: :articles) do
+  helpers do
+    def article
+      @article ||= Article.find(context[:article_id])
+    end
+  end
+
+  card do
+    content text_align: :center do
+      headline article.title
+      image article.url_to_image, width: 400, height: 400, fit: :contain do
+        tooltip article.published_at.to_date.to_fs(:long)
+      end
+      text article.description
+    end
+    event :click do
+      loads article.url, target: :_blank
+    end
+  end
+end

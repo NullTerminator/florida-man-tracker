@@ -1,0 +1,20 @@
+Voom::Presenters.define(:random) do
+  helpers do
+    def random_id
+      Article.all.sample.id
+    end
+  end
+
+  page do
+    title 'Florida Man Tracker - Random'
+  end
+
+  attach :nav
+
+  grid do
+    column 4
+    column 4 do
+      attach 'articles:article_card', article_id: random_id
+    end
+  end
+end

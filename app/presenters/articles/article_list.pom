@@ -1,0 +1,46 @@
+Voom::Presenters.define(:article_list, namespace: :articles) do
+  PAGE_SIZE = 20
+
+  helpers do
+    def articles(page = current_page)
+      Article
+        .order(published_at: :desc)
+        .offset((page - 1) * PAGE_SIZE)
+        .limit(PAGE_SIZE)
+        .pluck(:id)
+    end
+
+    def article_card(id)
+      attach 'articles:article_card', article_id: id
+    end
+
+    def current_page
+      (context[:page] || 1).to_i
+    end
+  end
+
+  articles.in_groups_of(2) do |art1, art2|
+    grid do
+      column 1
+      column 4 do
+        article_card art1
+      end
+      column 2
+      column 4 do
+        article_card art2
+      end if art2
+    end
+  end
+
+  more_id = SecureRandom.hex
+  content id: more_id, text_align: :center do
+    button 'Gimme Moar Florida Man!!!' do
+      event :click do
+        replaces more_id, 'articles:article_list', page: current_page + 1
+      end
+    end
+
+    blank
+    blank
+  end if articles(current_page + 1).any?
+end

@@ -1,0 +1,20 @@
+Voom::Presenters.define(:nav) do
+  header 'Florida Man Tracker' do
+    nav do
+      item 'Random' do
+        event :click do
+          loads :random
+        end
+      end
+
+      item 'All' do
+        event :click do
+          loads :index
+        end
+      end
+    end
+  end
+
+  blank
+  blank
+end

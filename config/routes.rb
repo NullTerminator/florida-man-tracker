@@ -18,5 +18,6 @@ Rails.application.routes.draw do
   end
 
   # Defines the root path route ("/")
-   root 'articles#index'
+   #root 'articles#index'
+   mount ::Voom::Presenters::WebClient::App, at: '/'
 end

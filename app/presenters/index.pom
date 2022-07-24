@@ -1,0 +1,9 @@
+Voom::Presenters.define(:index) do
+  page do
+    title 'Florida Man Tracker'
+  end
+
+  attach :nav
+
+  attach 'articles:article_list', page: 1
+end
