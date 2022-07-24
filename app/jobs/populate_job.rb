@@ -3,8 +3,7 @@ class PopulateJob
   sidekiq_options queue: 'default'
 
   def perform(from = 1.day.ago.beginning_of_day.iso8601, to = 1.day.ago.end_of_day.iso8601)
-    api_key = 'a63afa028c594bcd97ede1c8559c04a3'
-    news = News.new(api_key)
+    news = News.new(ENV['NEWS_API_KEY'])
     page = 1
 
     loop do

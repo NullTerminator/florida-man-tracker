@@ -1,0 +1,18 @@
+:concurrency: 1
+:pidfile: tmp/pids/sidekiq.pid
+:logfile: log/sidekiq.log
+staging:
+  :concurrency: 2
+production:
+  :concurrency: 10
+:queues:
+  - default
+
+tasks: &tasks
+  PopulateJob:
+    every: ["1d"]
+    queue: default
+    description: "Populate from yesterday's articles"
+
+:schedule:
+  <<: *tasks
