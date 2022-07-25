@@ -1,5 +1,5 @@
 Voom::Presenters.define(:nav) do
-  header 'Florida Man Tracker' do
+  header "Florida Man Tracker: #{Article.count} articles and counting..." do
     nav do
       item 'Random' do
         event :click do
@@ -17,4 +17,15 @@ Voom::Presenters.define(:nav) do
 
   blank
   blank
+
+  footer type: :large do
+    menu do
+      item 'Chris Marques'
+      item 'test.code.debug@gmail.com' do
+        event :click do
+          loads 'https://github.com/NullTerminator', target: :_blank
+        end
+      end
+    end
+  end
 end
