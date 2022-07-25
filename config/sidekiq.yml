@@ -10,9 +10,9 @@ production:
 
 tasks: &tasks
   PopulateJob:
-    every: ["1d"]
+    cron: '0 12 * * * *'
     queue: default
     description: "Populate from yesterday's articles"
 
-:schedule:
+schedule:
   <<: *tasks
