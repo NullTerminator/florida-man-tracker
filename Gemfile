@@ -50,7 +50,7 @@ gem "bootsnap", require: false
 gem 'news-api'
 gem 'sidekiq'
 gem 'sidekiq-scheduler'
-gem 'voom-presenters', github: 'coprl/coprl', require: false
+gem 'voom-presenters', github: 'coprl/coprl', require: 'voom'
 
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem

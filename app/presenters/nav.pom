@@ -20,10 +20,15 @@ Voom::Presenters.define(:nav) do
 
   footer type: :large do
     menu do
-      item 'Chris Marques'
-      item 'test.code.debug@gmail.com' do
+      item 'Chris Marques - test.code.debug@gmail.com' do
         event :click do
           loads 'https://github.com/NullTerminator', target: :_blank
+        end
+      end
+
+      item 'COPRL' do
+        event :click do
+          loads 'https://github.com/coprl/coprl', target: :_blank
         end
       end
     end
